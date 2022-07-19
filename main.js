@@ -27,6 +27,8 @@ for (var i=0; i < fullNodeList.length; i++)
 
       console.log($xml)
   var textList=xmlDoc.getElementsByTagName("Text");
+  var dateList=xmlDoc.getElementsByTagName("Date");
+  var fileList=xmlDoc.getElementsByTagName("File");
   for(let i=0;i<textList.length;i++){
     console.log(textList.item(i).innerHTML)
    var firstText=textList.item(i).innerHTML;
@@ -34,6 +36,20 @@ for (var i=0; i < fullNodeList.length; i++)
    <h4>${firstText}</h4>
 </div>`
  document.body.innerHTML+=prop;
+  }
+  for(let i=0;i<dateList.length;i++){
+    var dateText=dateList.item(i).innerHTML;
+    var dateProp=`<div class="responDate">
+    <h4>${dateText}</h4>
+    </div>`
+    document.body.innerHTML+=dateProp;
+  }
+  for(let i=0;i<fileList.length;i++){
+    var fileText=fileList.item(i).innerHTML;
+    var fileProp=`<div class="responFile">
+    <h4>${fileText}</h4>
+    </div>`
+    document.body.innerHTML+=fileProp;
   }
 }
 
