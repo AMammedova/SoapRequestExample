@@ -58,7 +58,7 @@ textdiv.innerHTML+=prop;
   for(let i=0;i<fileList.length;i++){
     var fileText=fileList.item(i).innerHTML;
     var fileProp=`
-    <h4>${fileText}</h4>
+    <a href="${fileText}">File</a>
     `
     filediv.innerHTML+=fileProp;
   
