@@ -2,6 +2,14 @@
 function soapRequest(){
     let pincode=document.getElementById("pinCode");
     let complaintNumber=document.getElementById("complaintNumber")
+    var div=document.createElement("div");
+    var textdiv=document.createElement("div");
+    var datediv=document.createElement("div");
+    var filediv=document.createElement("div");
+    filediv.id="responFile"
+    datediv.id="responDate"
+    textdiv.id="responText";
+    div.id="response"
     var url = "https://insure.a-group.az/InsureAzSvc/GeneralComplaintSvc.asmx";
     var xhr = new XMLHttpRequest();
 xhr.open("POST", url);
@@ -29,28 +37,36 @@ for (var i=0; i < fullNodeList.length; i++)
   var textList=xmlDoc.getElementsByTagName("Text");
   var dateList=xmlDoc.getElementsByTagName("Date");
   var fileList=xmlDoc.getElementsByTagName("File");
+  
   for(let i=0;i<textList.length;i++){
     console.log(textList.item(i).innerHTML)
    var firstText=textList.item(i).innerHTML;
-   var prop=`<div class="responText">
+   var prop=`
    <h4>${firstText}</h4>
-</div>`
- document.body.innerHTML+=prop;
+`
+textdiv.innerHTML+=prop;
+ div.appendChild(textdiv);
   }
   for(let i=0;i<dateList.length;i++){
     var dateText=dateList.item(i).innerHTML;
-    var dateProp=`<div class="responDate">
+    var dateProp=`
     <h4>${dateText}</h4>
-    </div>`
-    document.body.innerHTML+=dateProp;
+    `
+    datediv.innerHTML+=dateProp;
+    div.appendChild(datediv);
   }
   for(let i=0;i<fileList.length;i++){
     var fileText=fileList.item(i).innerHTML;
-    var fileProp=`<div class="responFile">
+    var fileProp=`
     <h4>${fileText}</h4>
-    </div>`
-    document.body.innerHTML+=fileProp;
+    `
+    filediv.innerHTML+=fileProp;
+  
+    
   }
+  document.body.appendChild(div);
+  document.body.appendChild(filediv);
+  
 }
 
 }};
