@@ -2,9 +2,6 @@
 function soapRequest(){
     let pincode=document.getElementById("pinCode");
     let complaintNumber=document.getElementById("complaintNumber")
-    let firstText=document.querySelector(".firstText")
-    let secondText=document.querySelector(".secondText")
-    let thirdText=document.querySelector(".thirdText")
     var url = "https://insure.a-group.az/InsureAzSvc/GeneralComplaintSvc.asmx";
     var xhr = new XMLHttpRequest();
 xhr.open("POST", url);
@@ -32,7 +29,11 @@ for (var i=0; i < fullNodeList.length; i++)
   var textList=xmlDoc.getElementsByTagName("Text");
   for(let i=0;i<textList.length;i++){
     console.log(textList.item(i).innerHTML)
-
+   var firstText=textList.item(i).innerHTML;
+   var prop=`<div class="responText">
+   <h4>${firstText}</h4>
+</div>`
+ document.body.innerHTML+=prop;
   }
 }
 
